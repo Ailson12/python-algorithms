@@ -152,3 +152,23 @@ thread2.join()
 
 print("Thread finalizado!")
 
+
+# 7. Decorators
+# Crie um decorator que meça o tempo de execução de uma função.
+def medir_tempo(func):
+    def wrapper(*args, **kwargs):
+        inicio = time.time()  # Marca o tempo inicial
+        func(*args, **kwargs)  # Executa a função original
+        fim = time.time()  # Marca o tempo final
+        print(f"Tempo de execução: {fim - inicio:.4f} segundos")
+    return wrapper  # Retorna a função modificada
+
+
+@medir_tempo
+def carregar_dados():
+    print("Carregando dados...")
+    time.sleep(2)  # Simula um processamento demorado
+    print("Dados carregados!")
+
+
+carregar_dados()
